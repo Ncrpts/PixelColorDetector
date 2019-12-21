@@ -1,0 +1,48 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PixelColorDetector.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ViseurShown" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Xcoord" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">200</Value>
+    </Setting>
+    <Setting Name="Ycoord" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">200</Value>
+    </Setting>
+    <Setting Name="SonViolet" Type="System.String" Scope="User">
+      <Value Profile="(Default)">(pas de son)</Value>
+    </Setting>
+    <Setting Name="SonRouge" Type="System.String" Scope="User">
+      <Value Profile="(Default)">(pas de son)</Value>
+    </Setting>
+    <Setting Name="useSonViolet" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="useSonRouge" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="PlaybackDeviceIndex" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="SavedVioletColorStr" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#E600E6</Value>
+    </Setting>
+    <Setting Name="SavedRougeColorStr" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#FF0000</Value>
+    </Setting>
+    <Setting Name="useAutoScan" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="AutoScanTimerValue" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">300</Value>
+    </Setting>
+    <Setting Name="VolumeViolet" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="VolumeRouge" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
