@@ -44,5 +44,14 @@
     <Setting Name="VolumeRouge" Type="System.Single" Scope="User">
       <Value Profile="(Default)">100</Value>
     </Setting>
+    <Setting Name="SinglePixel" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="zoneWidth" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="zoneHeight" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

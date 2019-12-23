@@ -50,6 +50,8 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.buttonTestSonRouge = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.trackBarVolumeRouge = new System.Windows.Forms.TrackBar();
             this.flowLayoutPanelSonViolet = new System.Windows.Forms.FlowLayoutPanel();
             this.checkBoxUseVioletSound = new System.Windows.Forms.CheckBox();
             this.buttonColorPickerViolet = new System.Windows.Forms.Button();
@@ -57,6 +59,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.buttonTestSonViolet = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.trackBarVolumeViolet = new System.Windows.Forms.TrackBar();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxXCoord = new System.Windows.Forms.TextBox();
@@ -74,10 +78,9 @@
             this.toolStripMenuItemOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemQuit = new System.Windows.Forms.ToolStripMenuItem();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.trackBarVolumeViolet = new System.Windows.Forms.TrackBar();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.trackBarVolumeRouge = new System.Windows.Forms.TrackBar();
+            this.groupBoxMode = new System.Windows.Forms.GroupBox();
+            this.radioButtonSingle = new System.Windows.Forms.RadioButton();
+            this.radioButtonMulti = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -86,12 +89,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
             this.flowLayoutPanelSonRouge.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarVolumeRouge)).BeginInit();
             this.flowLayoutPanelSonViolet.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarVolumeViolet)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel5.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarVolumeViolet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarVolumeRouge)).BeginInit();
+            this.groupBoxMode.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -107,11 +111,11 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 5;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 90F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 66F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 322F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 340F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(304, 557);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -119,17 +123,17 @@
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.flowLayoutPanel2, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.flowLayoutPanel3, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel4, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.flowLayoutPanel2, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 103);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 159);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 125F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(298, 334);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 135F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(298, 316);
             this.tableLayoutPanel2.TabIndex = 4;
             // 
             // flowLayoutPanel2
@@ -140,7 +144,7 @@
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(292, 39);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(292, 44);
             this.flowLayoutPanel2.TabIndex = 3;
             // 
             // button1
@@ -149,7 +153,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(175, 34);
             this.button1.TabIndex = 3;
-            this.button1.Text = "Scan couleur Manuel";
+            this.button1.Text = "Scan Manuel";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -186,9 +190,9 @@
             this.flowLayoutPanel3.Controls.Add(this.label3);
             this.flowLayoutPanel3.Controls.Add(this.trackBar1);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 48);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 53);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(292, 119);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(292, 129);
             this.flowLayoutPanel3.TabIndex = 4;
             // 
             // checkBox1
@@ -260,7 +264,7 @@
             this.trackBar1.Maximum = 1000;
             this.trackBar1.Minimum = 10;
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(299, 45);
+            this.trackBar1.Size = new System.Drawing.Size(286, 45);
             this.trackBar1.TabIndex = 3;
             this.trackBar1.TickFrequency = 100;
             this.trackBar1.Value = 300;
@@ -273,12 +277,12 @@
             this.tableLayoutPanel4.Controls.Add(this.flowLayoutPanelSonRouge, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.flowLayoutPanelSonViolet, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 173);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 188);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(292, 158);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(292, 125);
             this.tableLayoutPanel4.TabIndex = 5;
             // 
             // flowLayoutPanelSonRouge
@@ -293,9 +297,9 @@
             this.flowLayoutPanelSonRouge.Controls.Add(this.label6);
             this.flowLayoutPanelSonRouge.Controls.Add(this.trackBarVolumeRouge);
             this.flowLayoutPanelSonRouge.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanelSonRouge.Location = new System.Drawing.Point(3, 82);
+            this.flowLayoutPanelSonRouge.Location = new System.Drawing.Point(3, 65);
             this.flowLayoutPanelSonRouge.Name = "flowLayoutPanelSonRouge";
-            this.flowLayoutPanelSonRouge.Size = new System.Drawing.Size(286, 73);
+            this.flowLayoutPanelSonRouge.Size = new System.Drawing.Size(286, 57);
             this.flowLayoutPanelSonRouge.TabIndex = 1;
             // 
             // checkBoxUseRougeSound
@@ -368,6 +372,28 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 39);
+            this.label6.Margin = new System.Windows.Forms.Padding(3, 8, 0, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(48, 13);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Volume :";
+            // 
+            // trackBarVolumeRouge
+            // 
+            this.trackBarVolumeRouge.Location = new System.Drawing.Point(54, 34);
+            this.trackBarVolumeRouge.Maximum = 100;
+            this.trackBarVolumeRouge.Name = "trackBarVolumeRouge";
+            this.trackBarVolumeRouge.Size = new System.Drawing.Size(229, 45);
+            this.trackBarVolumeRouge.TabIndex = 9;
+            this.trackBarVolumeRouge.TickFrequency = 5;
+            this.trackBarVolumeRouge.Value = 100;
+            this.trackBarVolumeRouge.ValueChanged += new System.EventHandler(this.trackBarVolumeRouge_ValueChanged);
+            // 
             // flowLayoutPanelSonViolet
             // 
             this.flowLayoutPanelSonViolet.BackColor = System.Drawing.Color.Orchid;
@@ -382,7 +408,7 @@
             this.flowLayoutPanelSonViolet.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanelSonViolet.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanelSonViolet.Name = "flowLayoutPanelSonViolet";
-            this.flowLayoutPanelSonViolet.Size = new System.Drawing.Size(286, 73);
+            this.flowLayoutPanelSonViolet.Size = new System.Drawing.Size(286, 56);
             this.flowLayoutPanelSonViolet.TabIndex = 0;
             // 
             // checkBoxUseVioletSound
@@ -455,17 +481,41 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 39);
+            this.label5.Margin = new System.Windows.Forms.Padding(3, 8, 0, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(48, 13);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Volume :";
+            // 
+            // trackBarVolumeViolet
+            // 
+            this.trackBarVolumeViolet.Location = new System.Drawing.Point(54, 34);
+            this.trackBarVolumeViolet.Maximum = 100;
+            this.trackBarVolumeViolet.Name = "trackBarVolumeViolet";
+            this.trackBarVolumeViolet.Size = new System.Drawing.Size(229, 45);
+            this.trackBarVolumeViolet.TabIndex = 6;
+            this.trackBarVolumeViolet.TickFrequency = 5;
+            this.trackBarVolumeViolet.Value = 100;
+            this.trackBarVolumeViolet.Scroll += new System.EventHandler(this.trackBarVolumeViolet_Scroll);
+            this.trackBarVolumeViolet.ValueChanged += new System.EventHandler(this.trackBarVolumeViolet_ValueChanged);
+            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.label1);
             this.flowLayoutPanel1.Controls.Add(this.textBoxXCoord);
             this.flowLayoutPanel1.Controls.Add(this.label2);
             this.flowLayoutPanel1.Controls.Add(this.textBoxYCoord);
+            this.flowLayoutPanel1.Controls.Add(this.groupBoxMode);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 6);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(6);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(292, 28);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(292, 78);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // label1
@@ -509,10 +559,11 @@
             // panelColorIndicator
             // 
             this.panelColorIndicator.BackColor = System.Drawing.Color.White;
+            this.panelColorIndicator.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panelColorIndicator.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelColorIndicator.Location = new System.Drawing.Point(3, 43);
+            this.panelColorIndicator.Location = new System.Drawing.Point(3, 93);
             this.panelColorIndicator.Name = "panelColorIndicator";
-            this.panelColorIndicator.Size = new System.Drawing.Size(298, 54);
+            this.panelColorIndicator.Size = new System.Drawing.Size(298, 60);
             this.panelColorIndicator.TabIndex = 1;
             // 
             // labelFoundColor
@@ -521,7 +572,7 @@
             this.labelFoundColor.AutoSize = true;
             this.labelFoundColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFoundColor.ForeColor = System.Drawing.Color.Red;
-            this.labelFoundColor.Location = new System.Drawing.Point(3, 508);
+            this.labelFoundColor.Location = new System.Drawing.Point(3, 527);
             this.labelFoundColor.Name = "labelFoundColor";
             this.labelFoundColor.Size = new System.Drawing.Size(55, 20);
             this.labelFoundColor.TabIndex = 3;
@@ -533,7 +584,7 @@
             this.flowLayoutPanel5.Controls.Add(this.label4);
             this.flowLayoutPanel5.Controls.Add(this.comboBoxDevice);
             this.flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel5.Location = new System.Drawing.Point(3, 443);
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(3, 481);
             this.flowLayoutPanel5.Name = "flowLayoutPanel5";
             this.flowLayoutPanel5.Size = new System.Drawing.Size(298, 34);
             this.flowLayoutPanel5.TabIndex = 5;
@@ -602,50 +653,40 @@
             this.colorDialog1.ShowHelp = true;
             this.colorDialog1.SolidColorOnly = true;
             // 
-            // trackBarVolumeViolet
+            // groupBoxMode
             // 
-            this.trackBarVolumeViolet.Location = new System.Drawing.Point(54, 34);
-            this.trackBarVolumeViolet.Maximum = 100;
-            this.trackBarVolumeViolet.Name = "trackBarVolumeViolet";
-            this.trackBarVolumeViolet.Size = new System.Drawing.Size(229, 45);
-            this.trackBarVolumeViolet.TabIndex = 6;
-            this.trackBarVolumeViolet.TickFrequency = 5;
-            this.trackBarVolumeViolet.Value = 100;
-            this.trackBarVolumeViolet.Scroll += new System.EventHandler(this.trackBarVolumeViolet_Scroll);
-            this.trackBarVolumeViolet.ValueChanged += new System.EventHandler(this.trackBarVolumeViolet_ValueChanged);
+            this.groupBoxMode.Controls.Add(this.radioButtonMulti);
+            this.groupBoxMode.Controls.Add(this.radioButtonSingle);
+            this.groupBoxMode.Location = new System.Drawing.Point(3, 29);
+            this.groupBoxMode.Name = "groupBoxMode";
+            this.groupBoxMode.Size = new System.Drawing.Size(281, 46);
+            this.groupBoxMode.TabIndex = 4;
+            this.groupBoxMode.TabStop = false;
+            this.groupBoxMode.Text = "Mode";
             // 
-            // label5
+            // radioButtonSingle
             // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 39);
-            this.label5.Margin = new System.Windows.Forms.Padding(3, 8, 0, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(48, 13);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Volume :";
+            this.radioButtonSingle.AutoSize = true;
+            this.radioButtonSingle.Checked = true;
+            this.radioButtonSingle.Location = new System.Drawing.Point(49, 19);
+            this.radioButtonSingle.Name = "radioButtonSingle";
+            this.radioButtonSingle.Size = new System.Drawing.Size(69, 17);
+            this.radioButtonSingle.TabIndex = 0;
+            this.radioButtonSingle.TabStop = true;
+            this.radioButtonSingle.Text = "Pixel seul";
+            this.radioButtonSingle.UseVisualStyleBackColor = true;
+            this.radioButtonSingle.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
-            // label6
+            // radioButtonMulti
             // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 39);
-            this.label6.Margin = new System.Windows.Forms.Padding(3, 8, 0, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(48, 13);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Volume :";
-            // 
-            // trackBarVolumeRouge
-            // 
-            this.trackBarVolumeRouge.Location = new System.Drawing.Point(54, 34);
-            this.trackBarVolumeRouge.Maximum = 100;
-            this.trackBarVolumeRouge.Name = "trackBarVolumeRouge";
-            this.trackBarVolumeRouge.Size = new System.Drawing.Size(229, 45);
-            this.trackBarVolumeRouge.TabIndex = 9;
-            this.trackBarVolumeRouge.TickFrequency = 5;
-            this.trackBarVolumeRouge.Value = 100;
-            this.trackBarVolumeRouge.ValueChanged += new System.EventHandler(this.trackBarVolumeRouge_ValueChanged);
+            this.radioButtonMulti.AutoSize = true;
+            this.radioButtonMulti.Location = new System.Drawing.Point(180, 19);
+            this.radioButtonMulti.Name = "radioButtonMulti";
+            this.radioButtonMulti.Size = new System.Drawing.Size(50, 17);
+            this.radioButtonMulti.TabIndex = 1;
+            this.radioButtonMulti.Text = "Zone";
+            this.radioButtonMulti.UseVisualStyleBackColor = true;
+            this.radioButtonMulti.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // Form1
             // 
@@ -670,15 +711,17 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             this.flowLayoutPanelSonRouge.ResumeLayout(false);
             this.flowLayoutPanelSonRouge.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarVolumeRouge)).EndInit();
             this.flowLayoutPanelSonViolet.ResumeLayout(false);
             this.flowLayoutPanelSonViolet.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarVolumeViolet)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.flowLayoutPanel5.ResumeLayout(false);
             this.flowLayoutPanel5.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarVolumeViolet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarVolumeRouge)).EndInit();
+            this.groupBoxMode.ResumeLayout(false);
+            this.groupBoxMode.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -733,6 +776,9 @@
         private System.Windows.Forms.TrackBar trackBarVolumeRouge;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TrackBar trackBarVolumeViolet;
+        private System.Windows.Forms.GroupBox groupBoxMode;
+        private System.Windows.Forms.RadioButton radioButtonMulti;
+        private System.Windows.Forms.RadioButton radioButtonSingle;
     }
 }
 

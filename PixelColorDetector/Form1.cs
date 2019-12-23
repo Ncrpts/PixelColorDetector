@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace PixelColorDetector
     public partial class Form1 : Form
     {
         FormViseur viseur;
+        FormZoneRectangle zoneRectangle;
 
         //System.Media.SoundPlayer playerViolet;
         //System.Media.SoundPlayer playerRouge;
@@ -22,7 +24,7 @@ namespace PixelColorDetector
 
         WaveOutEvent outputDeviceViolet, outputDeviceRouge;
 
-
+        Bitmap bmp = new Bitmap(1, 1);
         
 
 
@@ -56,13 +58,26 @@ namespace PixelColorDetector
         private void Form1_Load(object sender, EventArgs e)
         {
             viseur = new FormViseur(this);
+            zoneRectangle = new FormZoneRectangle(this);
 
-            if (Properties.Settings.Default.ViseurShown)
+            if (Properties.Settings.Default.ViseurShown && Properties.Settings.Default.SinglePixel)
             {
                 checkBox1.Checked = true;
                 viseur.Show();
                 Point newPoint = new Point(Properties.Settings.Default.Xcoord - 25, Properties.Settings.Default.Ycoord - 25);
                 viseur.Location = newPoint;
+                textBoxXCoord.Enabled = true;
+                textBoxYCoord.Enabled = true;
+
+            }
+            else if (Properties.Settings.Default.ViseurShown && !Properties.Settings.Default.SinglePixel)
+            {
+                checkBox1.Checked = true;
+                zoneRectangle.Show();
+                Point newPoint = new Point(Properties.Settings.Default.Xcoord - 25, Properties.Settings.Default.Ycoord - 25);
+                zoneRectangle.Location = newPoint;
+                textBoxXCoord.Enabled = false;
+                textBoxYCoord.Enabled = false;
             }
             else
                 checkBox1.Checked = false;
@@ -85,6 +100,8 @@ namespace PixelColorDetector
             trackBarVolumeRouge.Value = (int) Properties.Settings.Default.VolumeRouge;
             trackBarVolumeViolet.Value = (int)Properties.Settings.Default.VolumeViolet;
 
+            radioButtonSingle.Checked = Properties.Settings.Default.SinglePixel;
+            radioButtonMulti.Checked = !Properties.Settings.Default.SinglePixel;
 
             ResetSoundFiles();
             
@@ -99,12 +116,22 @@ namespace PixelColorDetector
             int xCoord = Int32.Parse(textBoxXCoord.Text);
             int yCoord = Int32.Parse(textBoxYCoord.Text);
 
-            Color retrievedColor = GetColorAt(xCoord, yCoord);
+            if(Properties.Settings.Default.SinglePixel) // si on scan un seul pixel
+            { 
+                Color retrievedColor = GetColorAt(xCoord, yCoord);
 
-            panelColorIndicator.BackColor = retrievedColor;
-            labelColor.Text = "Color: " + ColorTranslator.ToHtml(retrievedColor);
-            labelColor.ForeColor = retrievedColor;
-            CheckColor(retrievedColor);
+                panelColorIndicator.BackColor = retrievedColor;
+                labelColor.Text = "Color: " + ColorTranslator.ToHtml(retrievedColor);
+                labelColor.ForeColor = retrievedColor;
+                CheckColor(retrievedColor);
+            }
+            else // sinon si on scan une zone
+            {
+                Bitmap retrievedZonePicture = GetImageAt(xCoord, yCoord, Properties.Settings.Default.zoneWidth, Properties.Settings.Default.zoneHeight);
+                panelColorIndicator.BackColor = Color.Transparent;
+                panelColorIndicator.BackgroundImage = (Image)retrievedZonePicture;
+                CheckColorRange(ImageToColorRange(retrievedZonePicture));
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -118,7 +145,37 @@ namespace PixelColorDetector
         private bool soundVioletSet = false;
         private bool soundRougeSet = false;
 
+        List<Color> ImageToColorRange(Bitmap image)
+        {
+            List<Color> tempList = new List<Color>();
 
+            int imageHeight = image.Height;
+            int imageWidth = image.Width;
+
+            for(int i = 0; i < imageWidth; i++)
+            {
+                for(int j = 0; j < imageHeight; j++)
+                {
+                    tempList.Add(image.GetPixel(i, j));
+                }
+            }
+
+            
+            return tempList;
+        }
+        private void CheckColorRange(List<Color> colorList)
+        {
+            foreach (Color color in colorList)
+            {
+                if(IsColorRedTrigger(color) || IsColorVioletTrigger(color))
+                {
+                    CheckColor(color);
+                    return;
+                }
+            }
+            CheckColor(colorList[colorList.Count - 1]);
+
+        }
         private void CheckColor(Color color)
         {
             if(IsColorVioletTrigger(color))
@@ -199,7 +256,7 @@ namespace PixelColorDetector
 
         }
 
-        Bitmap bmp = new Bitmap(1, 1);
+        
 
         Color GetColorAt(int x, int y)
         {
@@ -209,12 +266,26 @@ namespace PixelColorDetector
             return bmp.GetPixel(0, 0);
         }
 
+        Bitmap GetImageAt(int x, int y, int width, int height)
+        {
+            Bitmap bmpZone = new Bitmap(width, height);
+            Rectangle bounds = new Rectangle(x, y, width, height);
+            using (Graphics g = Graphics.FromImage(bmpZone))
+                g.CopyFromScreen(bounds.Location, Point.Empty, bounds.Size);
+            return bmpZone;
+        }
+
         private void textBoxXCoord_TextChanged(object sender, EventArgs e)
         {
             if(Int32.TryParse(textBoxXCoord.Text, out int parsed))
             { 
                 Point newPoint = new Point(parsed - 25, viseur.Location.Y);
                 viseur.Location = newPoint;
+                //Debug.WriteLine("Width before move : " + zoneRectangle.Width);
+                //int correctWidth = zoneRectangle.Width;
+                //zoneRectangle.Location = newPoint;
+                //zoneRectangle.Size = new Size(correctWidth, zoneRectangle.Height);
+                //Debug.WriteLine("Width after move : " + zoneRectangle.Width + "should be : " + correctWidth);
                 Properties.Settings.Default.Xcoord = parsed;
                 Properties.Settings.Default.Save();
             }
@@ -226,6 +297,7 @@ namespace PixelColorDetector
             {
                 Point newPoint = new Point(viseur.Location.X, parsed - 25);
                 viseur.Location = newPoint;
+                //zoneRectangle.Location = newPoint;
                 Properties.Settings.Default.Ycoord = parsed;
                 Properties.Settings.Default.Save();
             }
@@ -236,16 +308,22 @@ namespace PixelColorDetector
             if (!checkBox1.Checked)
             {
                 viseur.Hide();
+                zoneRectangle.Hide();
                 Properties.Settings.Default.ViseurShown = false;
                 Properties.Settings.Default.Save();
             }
             else
             {
-                viseur.Show();
+                if (Properties.Settings.Default.SinglePixel)
+                    viseur.Show();
+                else
+                    zoneRectangle.Show();
+
                 Point newPoint = new Point(Properties.Settings.Default.Xcoord - 25, Properties.Settings.Default.Ycoord - 25);
                 viseur.Location = newPoint;
+                //zoneRectangle.Location = newPoint;
                 Properties.Settings.Default.ViseurShown = true;
-                Properties.Settings.Default.Save();
+                Properties.Settings.Default.Save(); 
             }
         }
 
@@ -431,13 +509,14 @@ namespace PixelColorDetector
             if (buttonColorPickerViolet.BackColor == labelColor.ForeColor)
                 return;
 
+            Color tempColor = labelColor.ForeColor;
 
-            var confirmResult = MessageBox.Show("Êtes-vous sûr de vouloir remplacer la detection de " + ColorTranslator.ToHtml(buttonColorPickerViolet.BackColor) + " par " + ColorTranslator.ToHtml(labelColor.ForeColor) + "?",
+            var confirmResult = MessageBox.Show("Êtes-vous sûr de vouloir remplacer la detection de " + ColorTranslator.ToHtml(buttonColorPickerViolet.BackColor) + " par " + ColorTranslator.ToHtml(tempColor) + "?",
                                      "Confirmation de changement de Couleur",
                                      MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
-                buttonColorPickerViolet.BackColor = labelColor.ForeColor;
+                buttonColorPickerViolet.BackColor = tempColor;
                 Properties.Settings.Default.SavedVioletColorStr = ColorTranslator.ToHtml(buttonColorPickerViolet.BackColor);
                 Properties.Settings.Default.Save();
             }
@@ -449,12 +528,14 @@ namespace PixelColorDetector
             if (buttonColorPickerRouge.BackColor == labelColor.ForeColor)
                 return;
 
-            var confirmResult = MessageBox.Show("Êtes-vous sûr de vouloir remplacer la detection de " + ColorTranslator.ToHtml(buttonColorPickerRouge.BackColor) + " par " + ColorTranslator.ToHtml(labelColor.ForeColor) + "?",
+            Color tempColor = labelColor.ForeColor;
+
+            var confirmResult = MessageBox.Show("Êtes-vous sûr de vouloir remplacer la detection de " + ColorTranslator.ToHtml(buttonColorPickerRouge.BackColor) + " par " + ColorTranslator.ToHtml(tempColor) + "?",
                                      "Confirmation de changement de Couleur",
                                      MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
-                buttonColorPickerRouge.BackColor = labelColor.ForeColor;
+                buttonColorPickerRouge.BackColor = tempColor;
                 Properties.Settings.Default.SavedRougeColorStr = ColorTranslator.ToHtml(buttonColorPickerRouge.BackColor);
                 Properties.Settings.Default.Save();
             }
@@ -517,6 +598,53 @@ namespace PixelColorDetector
 
             Properties.Settings.Default.VolumeRouge = trackBarVolumeRouge.Value;
             Properties.Settings.Default.Save();
+        }
+
+        private void radioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton rb = sender as RadioButton;
+
+            if (rb == null)
+            {
+                MessageBox.Show("Sender is not a RadioButton");
+                return;
+            }
+
+            if(rb.Checked)
+            {
+                if (rb.Name == "radioButtonSingle")
+                {
+                    textBoxXCoord.Enabled = true;
+                    textBoxYCoord.Enabled = true;
+                    panelColorIndicator.BackgroundImage = null;
+                
+                    Properties.Settings.Default.SinglePixel = true;
+                }
+                else
+                {
+                    Properties.Settings.Default.SinglePixel = false;
+                    textBoxXCoord.Enabled = false;
+                    textBoxYCoord.Enabled = false;
+                }
+                Properties.Settings.Default.Save();
+
+                if(Properties.Settings.Default.ViseurShown)
+                {
+                    if (Properties.Settings.Default.SinglePixel)
+                    {
+                        viseur.Show();
+                        zoneRectangle.Hide();
+                    }
+                    else
+                    { 
+                        zoneRectangle.Show();
+                        viseur.Hide();
+                    }
+                }
+
+                return;
+            }
+            
         }
 
         private void checkBoxUseVioletSound_CheckedChanged(object sender, EventArgs e)

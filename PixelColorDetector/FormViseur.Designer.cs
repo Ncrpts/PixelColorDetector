@@ -50,6 +50,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "FormViseur";
             this.TransparencyKey = System.Drawing.Color.LimeGreen;
+            this.Load += new System.EventHandler(this.FormViseur_Load);
             this.LocationChanged += new System.EventHandler(this.FormViseur_LocationChanged);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormViseur_MouseDown);
             this.ResumeLayout(false);

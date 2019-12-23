@@ -67,5 +67,10 @@ namespace PixelColorDetector
             if(this.Focused)
                 mainForm.ChangeTextBoxCoords(this.Location.X + 25, this.Location.Y + 25);
         }
+
+        private void FormViseur_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
